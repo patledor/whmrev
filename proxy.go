@@ -38,7 +38,7 @@ func proxyRequest(c *gin.Context, whmURL string) {
         if key == "Set-Cookie" {
             for _, v := range values {
                 // Rewrite WHM domain in cookies to Render domain
-                v = strings.ReplaceAll(v, "whmdomain.com", c.Request.Host)
+                v = strings.ReplaceAll(v, "imatech-taguig.net", c.Request.Host)
                 c.Writer.Header().Add(key, v)
             }
         } else {
@@ -55,7 +55,7 @@ func proxyRequest(c *gin.Context, whmURL string) {
     contentType := resp.Header.Get("Content-Type")
     if strings.Contains(contentType, "text/html") {
         bodyBytes, _ := io.ReadAll(resp.Body)
-        bodyString := strings.ReplaceAll(string(bodyBytes), "whmdomain.com", c.Request.Host)
+        bodyString := strings.ReplaceAll(string(bodyBytes), "imatech-taguig.net", c.Request.Host)
         c.Writer.Write([]byte(bodyString))
     } else {
         // For non-HTML responses, just copy raw body
