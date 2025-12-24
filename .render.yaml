@@ -1,7 +1,7 @@
 # Render deployment configuration for Go Gin proxy
 services:
   - type: web
-    name: whm-proxy
+    name: whmrev
     env: go
     region: oregon       # o asia, depende sa preference
     plan: free           # o standard, depende sa kailangan
@@ -14,4 +14,5 @@ services:
       - key: PORT
         value: "8080"       # Render ay mag-ooverride nito sa runtime
    
+
 
