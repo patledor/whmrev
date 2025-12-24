@@ -1,6 +1,6 @@
-module go-proxy
+module github.com/patledor/whmrev
 
-go 1.25
+go 1.25.5
 
 require github.com/gin-gonic/gin v1.11.0
 

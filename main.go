@@ -5,30 +5,26 @@ import (
 	"strings"
 
 	"github.com/gin-gonic/gin"
-	"go-proxy/proxy"
+	"github.com/patledor/whmrev/proxy"
 )
 
 func main() {
 	r := gin.Default()
 
-	// Catch-all route for wildcard subdomains
 	r.Any("/*path", func(c *gin.Context) {
-		host := c.Request.Host // e.g., shop.renderdomain.com
+		host := c.Request.Host
 		parts := strings.Split(host, ".")
-		if len(parts) < 3 { // expecting subdomain.domain.tld
+		if len(parts) < 3 {
 			c.String(400, "Subdomain required")
 			return
 		}
-		subdomain := parts[0]
 
-		// Build WHM URL dynamically
+		subdomain := parts[0]
 		whmURL := "https://" + subdomain + ".imatech-taguig.net" + c.Param("path")
 
-		// Forward request via proxy
 		proxy.ProxyRequest(c, whmURL)
 	})
 
-	port := "8080"
-	log.Println("Wildcard reverse proxy running on http://localhost:" + port)
-	r.Run(":" + port)
+	log.Println("Proxy running on :8080")
+	r.Run(":8080")
 }
