@@ -8,9 +8,10 @@ services:
     branch: main         # branch ng repo mo
     autoDeploy: true
     goVersion: 1.25.5
-    buildCommand: go build -o app
-    startCommand: ./app
+    buildCommand: go build -o appwhm
+    startCommand: ./appwhm
     envVars:
       - key: PORT
         value: "8080"       # Render ay mag-ooverride nito sa runtime
    
+
