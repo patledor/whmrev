@@ -2,7 +2,7 @@ package main
 
 import (
     "io"
-
+ "net/http"
     "strings"
 
     "github.com/gin-gonic/gin"
@@ -62,4 +62,5 @@ func proxyRequest(c *gin.Context, whmURL string) {
         io.Copy(c.Writer, resp.Body)
     }
 }
+
 
