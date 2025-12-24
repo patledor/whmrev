@@ -2,7 +2,7 @@ package main
 
 import (
     "log"
-    "net/http"
+
     "strings"
 
     "github.com/gin-gonic/gin"
@@ -25,3 +25,4 @@ func main() {
     log.Println("Wildcard reverse proxy running on http://localhost:" + port)
     r.Run(":" + port)
 }
+
