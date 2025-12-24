@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: whmrev
+    env: go
+    region: oregon # o asia, depende sa preference
+    plan: free # o standard, depende sa kailangan
+    branch: main # branch ng repo mo
+    autoDeploy: true
+    goVersion: 1.25.5
+    buildCommand: go build -o app
+    startCommand: ./app
+    envVars:
+      - key: PORT
+        fromDatabase: false
+        value: "10000" # Render ay mag-ooverride nito sa $PORT runtime
